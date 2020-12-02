@@ -3,10 +3,11 @@ import ClinicItem from "../ClinicItem";
 import "./ClinicList.css";
 
 export default function ClinicList(props) {
+  const { list } = props;
   return (
     <div className="clinic_list">
-      {props.data.map((data, index) => (
-        <ClinicItem key={index} data={data} />
+      {list.map((data, index) => (
+        <ClinicItem id={data.id} key={index} data={data} />
       ))}
     </div>
   );
