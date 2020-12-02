@@ -12,3 +12,7 @@
 .calendar_item:hover {
   background-color: sandybrown;
 }
+
+.is_selected {
+  background-color: sandybrown;
+}
