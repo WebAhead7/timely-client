@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Home from "../screens/Home";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Profile from "../screens/Profile";
@@ -8,15 +8,25 @@ import Navbar from "../components/Navbar";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList } from "../Api/api";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const [sucsess, setSucsess] = useState(false);
-  const [logSucsess, setLogSucsess] = useState(false);
   const [list, setList] = useState(null);
-  const [islogin, setLogin] = useState(true);
+  const [profile, setProfile] = useState(null);
+  const [logSucsess, setLogSucsess] = useState(false);
+
+  console.log(sucsess);
+
+  const history = useHistory();
+
+  const redirect = () => {
+    history.push("/");
+  };
 
   useEffect(() => {
     getDocList(setList);
+    // getProfile(userId, setProfile);
   }, []);
   return (
     <div className="App">
@@ -24,16 +34,19 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            <Home />
+            {sucsess ? (
+              <Home list={list} profile={profile} setProfile={setProfile} />
+            ) : (
+              <Redirect to="/login" />
+            )}
           </Route>
-
           <Route path="/signup">
-            {sucsess ? <Home /> : <Signup setSucsess={setSucsess} />}
+            <Signup setSucsess={setSucsess} />
           </Route>
 
           <Route path="/login">
             {sucsess ? (
-              <Home list={list} />
+              <Redirect to="/" />
             ) : (
               <Login setLogSucsess={setLogSucsess} />
             )}
@@ -43,7 +56,6 @@ function App() {
             path="/clinic/:id/:docname/:title"
             component={(props) => <Clinic {...props} />}
           />
-
           <Route path="/profile">
             <Profile />
           </Route>

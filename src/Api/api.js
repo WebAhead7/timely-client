@@ -22,3 +22,15 @@ export const getDocClinic = async (id, setClinic) => {
     console.log(e);
   }
 };
+
+export const getProfile = async (id, setProfile) => {
+  const profileUrl = `http://localhost:4000/client/${id}/profile`;
+  try {
+    const data = await fetch(profileUrl);
+    const profile = await data.json();
+    setProfile(profile);
+    // console.log(list);
+  } catch (e) {
+    console.log(e);
+  }
+};
