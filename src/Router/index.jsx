@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import App from "../App/App";
+import Signup from "../screens/Signup";
 
 // import Navbar from "../../components/Navbar/Navbar";
 
@@ -16,6 +17,8 @@ function Router() {
         {/* <Navbar /> */}
         <Switch>
           <Route exact path="/" component={App} />
+          <Route exact path="/signup" component={Signup} />
+
         </Switch>
       </BrowserRouter>
     </>
