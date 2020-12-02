@@ -15,12 +15,16 @@ export default function Signup(props) {
   const history = useHistory();
 
   function redirect() {
+    props.setSucsess(true);
     history.push("/");
   }
 
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
-    const url = `http://localhost:4000/${checked ? "doctor" : "client"}/signup`;
+    const url = `https://timelyserver.herokuapp.com/${
+      checked ? "doctor" : "client"
+    }/signup`;
+
     console.log("url", url);
     fetch(url, {
       method: "POST",
@@ -30,7 +34,6 @@ export default function Signup(props) {
       .then((res) => res.json())
       .then((msg) => {
         setMsg(msg.msg);
-        props.setSucsess((sucsess) => (sucsess = msg.auth));
 
         if (msg.auth) {
           redirect();

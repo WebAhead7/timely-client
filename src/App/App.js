@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Home from "../screens/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "../screens/Login";
@@ -8,12 +8,10 @@ import Navbar from "../components/Navbar";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList } from "../Api/api";
-import Navbar from "../components/Navbar";
 
 function App() {
-  
-  const [sucsess, setSucsess] = React.useState(false);
-
+  const [sucsess, setSucsess] = useState(false);
+  const [logSucsess, setLogSucsess] = useState(false);
   const [list, setList] = useState(null);
   const [islogin, setLogin] = useState(true);
 
@@ -26,20 +24,19 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-          { sucsess? <Home /> :  <Signup setSucsess={setSucsess}/>}  
+            <Home />
           </Route>
 
-          <Route path="/signup"> 
-         <Signup setSucsess={setSucsess}/>
-          </Route>
-
-          <Route path="/login" > 
-          <Login setSucsess={setSucsess}/>
-            {islogin ? <Home list={list} /> : <Login />}
+          <Route path="/signup">
+            {sucsess ? <Home /> : <Signup setSucsess={setSucsess} />}
           </Route>
 
           <Route path="/login">
-            <Login />
+            {sucsess ? (
+              <Home list={list} />
+            ) : (
+              <Login setLogSucsess={setLogSucsess} />
+            )}
           </Route>
 
           <Route
@@ -48,9 +45,8 @@ function App() {
           />
 
           <Route path="/profile">
-            <Profile dataObj={clientObj} />
+            <Profile />
           </Route>
-          
         </Switch>
       </BrowserRouter>
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 export default function Login(props) {
   const [email, setEmail] = React.useState("");
   const [pass, setPassword] = React.useState("");
@@ -10,8 +10,16 @@ export default function Login(props) {
   const { setLogin } = props;
   const data = { email, pass };
 
+  const history = useHistory();
+
+  function redirect() {
+    props.setSucsess(true);
+    history.push("/");
+  }
+
+  const url = `https://timelyserver.herokuapp.com/`;
   function loginHandler() {
-    fetch(`http://localhost:4000/${check ? "doctor" : "client"}/login`, {
+    fetch(`${url}${check ? "doctor" : "client"}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
@@ -21,6 +29,7 @@ export default function Login(props) {
       })
       .then((message) => {
         setMessage(message);
+        if (message.auth) redirect();
       })
       .catch((error) => console.error(error.msg));
   }
