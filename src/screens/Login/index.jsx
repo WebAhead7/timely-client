@@ -1,5 +1,67 @@
 import React from "react";
+import "./Login.css";
+import { Link } from "react-router-dom";
 
-export default function Login() {
-  return <div>Login Screen</div>;
+export default function Login(props) {
+  const [email, setEmail] = React.useState("");
+  const [pass, setPassword] = React.useState("");
+  const [check, setCheck] = React.useState(false);
+  const [message, setMessage] = React.useState({});
+  const { setLogin } = props;
+  const data = { email, pass };
+
+  function loginHandler() {
+    fetch(`http://localhost:4000/${check ? "doctor" : "client"}/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((message) => {
+        setMessage(message);
+      })
+      .catch((error) => console.error(error.msg));
+  }
+
+  return (
+    <div id="login-div">
+      <h1 id="log-in-title">Log in</h1>
+
+      <form>
+        <div className="fields">
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div id="whoDiv">
+            <input
+              id="whoAmI"
+              type="checkbox"
+              onChange={(e) => setCheck(!check)}
+            />
+            <label htmlFor="whoAmI">I am a Doctor</label>
+          </div>
+        </div>
+      </form>
+      <button onClick={loginHandler}>Login</button>
+      <br />
+      <br />
+      <Link to="/signup" id="register">
+        Click Here To Register
+      </Link>
+      <h1 className={message.msg === "Welcome" ? "green" : "red"}>
+        {message.msg ? message.msg : ""}
+      </h1>
+    </div>
+  );
 }

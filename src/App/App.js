@@ -3,6 +3,7 @@ import Home from "../screens/Home";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Login from "../screens/Login";
 import Profile from "../screens/Profile";
+import Navbar from "../components/Navbar";
 import "./App.css";
 
 function App() {
@@ -28,14 +29,13 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {/* <Navbar /> */}
+        <Navbar />
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route path="/login">
-            {" "}
-            <Login />{" "}
+            <Login />
           </Route>
           <Route path="/profile">
             <Profile dataObj={clientObj} />
