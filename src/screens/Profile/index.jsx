@@ -7,7 +7,7 @@ export default function Profile(props) {
   return (
     <div className="profile">
       <div className="left-info">
-        <img src={imgUrl} id="profile-img"></img>
+        <img src={imgUrl} id="profile-img" alt="profilepic"></img>
         <h2>First Name: {firstname}</h2>
         <h2>Last Name: {lastname}</h2>
         <h2>Email: {email}</h2>

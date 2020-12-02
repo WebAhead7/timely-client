@@ -1,13 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import ClinicHeader from "../../components/ClinicHeader";
+import { getDocClinic } from "../../Api/api";
+export default function Clinic(props) {
+  const [clinic, setClinic] = useState(null);
 
-export default function Clinic() {
   const data = { sunday, monday, tuesday, wednesday };
+  const {
+    match: {
+      params: { id, docname, title },
+    },
+  } = props;
+
+  useEffect(() => {
+    getDocClinic(id, setClinic);
+  }, []);
+  if (!clinic) return <div>Loading</div>;
+  //   const { sunday } = clinic.cal_data;
+  //   console.log(clinic.cal_data.sunday);
   return (
     <div>
-      <ClinicHeader />
-      <Calendar data={data} />
+      <ClinicHeader data={clinic} />
+      <Calendar data={clinic.cal_data} />
     </div>
   );
 }

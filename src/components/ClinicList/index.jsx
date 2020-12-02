@@ -7,7 +7,7 @@ export default function ClinicList(props) {
   return (
     <div className="clinic_list">
       {list.map((data, index) => (
-        <ClinicItem key={index} data={data} />
+        <ClinicItem id={data.id} key={index} data={data} />
       ))}
     </div>
   );

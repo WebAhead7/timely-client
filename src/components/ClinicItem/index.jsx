@@ -4,7 +4,9 @@ import "./ClinicItem.css";
 
 export default function ClinicItem(props) {
   const { data } = props;
-  const { firstname, lastname, imgUrl } = data;
+
+  const { firstname, lastname, imgUrl, id, title } = data;
+
   return (
     <div className="clinic_item">
       <div className="doc_img_item">
@@ -14,7 +16,7 @@ export default function ClinicItem(props) {
         />
       </div>
       <div className="doc_name_item">
-        <Link to="/clinic">
+        <Link to={`/clinic/${id}/${firstname}-${lastname}/${title}`}>
           <h2>
             {firstname} {lastname}
           </h2>
