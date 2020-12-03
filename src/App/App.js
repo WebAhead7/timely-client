@@ -16,13 +16,11 @@ function App() {
   const [profile, setProfile] = useState(null);
   const [clientId, setClientId] = useState(null);
 
-  const setLogin = (isLogged, clientid) => {
-    console.log("IN SET LOGIN");
+  const setLogin = (isLogged, id) => {
     setSucsess(isLogged);
-    setClientId(clientid);
+    setClientId(id);
     localStorage.setItem("isloggedin", JSON.stringify(isLogged));
-    localStorage.setItem("clientId", JSON.stringify(isLogged));
-    console.log(isLogged, clientid);
+    localStorage.setItem("clientId", JSON.stringify(id));
   };
 
   const getLogin = () => {
