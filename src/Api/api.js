@@ -1,3 +1,5 @@
+import Profile from "../screens/Profile";
+
 const listUrl = "http://localhost:4000/main/get-list";
 
 export const getDocList = async (setList) => {
@@ -30,6 +32,7 @@ export const getProfile = async (id, setProfile) => {
     const profile = await data.json();
     setProfile(profile);
     console.log(profile);
+    localStorage.setItem("userprofile", JSON.stringify(profile));
   } catch (e) {
     console.log(e);
   }

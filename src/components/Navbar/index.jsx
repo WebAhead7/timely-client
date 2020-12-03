@@ -20,6 +20,9 @@ export default function Navbar() {
       <Link className="link" to="/profile">
         <button>Profile</button>
       </Link>
+      <Link id="Log out" to="/" className="link">
+        Logout{" "}
+      </Link>
     </nav>
   );
 }
