@@ -65,7 +65,7 @@ export const createCalendarApi = async (id, days) => {
 
   const calendarUrl = `${heroku}doctor/${id}/create-calendar`;
   try {
-    const response = await fetch(calendarUrl, config);
+    const response = await fetch(calendarUrl);
     const json = await response.json();
 
     if (json.status === 201) {
