@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import CalendarList from "../CalendarList";
 
 export default function Calendar(props) {
   const [selected, setSelected] = useState(null);
-  const { sunday, monday, tuesday, wednesday, thursday } = props.data;
+
+  const { setAppointment, appointment } = props;
+  const { sunday, monday, tuesday, wednesday, thursday, id } = props.data;
   const days = Object.keys(props.data);
+
+  const selectAppointment = () => {
+    setAppointment(selected);
+  };
 
   return (
     <div className="main_calendar_main">
@@ -43,6 +49,11 @@ export default function Calendar(props) {
           data={thursday}
           day={days[4]}
         />
+      </div>
+      <div>
+        <button onClick={selectAppointment} style={{ margin: "10px" }}>
+          Create Appointment
+        </button>
       </div>
     </div>
   );

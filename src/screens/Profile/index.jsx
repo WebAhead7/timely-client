@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Profile.css";
 
 export default function Profile(props) {
   const { firstname, lastname, email, imgUrl, title, dsc } = props.dataObj;
+
+  useEffect(() => {}, []);
 
   return (
     <div className="profile">

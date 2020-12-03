@@ -9,6 +9,18 @@
   cursor: pointer;
 }
 
+.calendar_item_taken {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  background-color: red;
+}
+
 .calendar_item:hover {
   background-color: sandybrown;
 }

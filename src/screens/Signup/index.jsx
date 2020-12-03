@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 
+import "./Signup.css";
 export default function Signup(props) {
   const [checked, setChecked] = React.useState(false);
   const [firstname, setFirstName] = React.useState("");
@@ -12,18 +12,9 @@ export default function Signup(props) {
   const [dsc, setDsc] = React.useState("");
   const [msg, setMsg] = React.useState("");
 
-  const history = useHistory();
-
-  function redirect() {
-    props.setSucsess(true);
-    history.push("/");
-  }
-
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
-    const url = `https://timelyserver.herokuapp.com/${
-      checked ? "doctor" : "client"
-    }/signup`;
+    const url = `http://localhost:4000/${checked ? "doctor" : "client"}/signup`;
 
     console.log("url", url);
     fetch(url, {
@@ -34,16 +25,15 @@ export default function Signup(props) {
       .then((res) => res.json())
       .then((msg) => {
         setMsg(msg.msg);
-
         if (msg.auth) {
-          redirect();
+          props.setLogin(true);
         }
       })
       .catch((err) => console.log(err));
   }
 
   return (
-    <div>
+    <div className="signup_form">
       <form>
         <label htmlFor="fname">First name:</label>
         <br />

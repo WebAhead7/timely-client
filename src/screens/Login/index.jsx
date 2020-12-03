@@ -7,7 +7,7 @@ export default function Login(props) {
   const [pass, setPassword] = React.useState("");
   const [check, setCheck] = React.useState(false);
   const [message, setMessage] = React.useState({});
-  const { setSucsess } = props;
+  const { setLogin, setClientId } = props;
   const data = { email, pass };
 
   const url = `https://timelyserver.herokuapp.com/`;
@@ -24,9 +24,7 @@ export default function Login(props) {
       .then((message) => {
         setMessage(message);
         if (message.auth) {
-          console.log(message);
-          setSucsess(true);
-          // redirect();
+          setLogin(true, message.id);
         }
       })
       .catch((error) => console.error(error.msg));
@@ -63,12 +61,12 @@ export default function Login(props) {
       <button onClick={loginHandler}>Login</button>
       <br />
       <br />
-      <Link to="/signup" id="register">
+      {/* <Link to="/signup" id="register">
         Click Here To Register
       </Link>
       <h1 className={message.msg === "Welcome" ? "green" : "red"}>
         {message.msg ? message.msg : ""}
-      </h1>
+      </h1> */}
     </div>
   );
 }

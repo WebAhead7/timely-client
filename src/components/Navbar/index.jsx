@@ -22,7 +22,7 @@ export default function Navbar() {
               <a href="btn btn-primary">SIGN IN</a>
             </li>
             <li id="sign up">
-              <Link href="btn btn-primary">Profile</Link>
+              <Link to="btn btn-primary">Profile</Link>
             </li>
           </ul>
         </div>

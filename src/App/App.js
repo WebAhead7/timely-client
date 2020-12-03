@@ -1,32 +1,44 @@
 import React, { useState, useEffect } from "react";
 import Home from "../screens/Home";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Profile from "../screens/Profile";
 import Navbar from "../components/Navbar";
 import "./App.css";
 import Clinic from "../screens/Clinic";
-import { getDocList } from "../Api/api";
-import { useHistory } from "react-router-dom";
+import { getDocList, getProfile } from "../Api/api";
 
 function App() {
   const [sucsess, setSucsess] = useState(false);
   const [list, setList] = useState(null);
   const [profile, setProfile] = useState(null);
-  const [logSucsess, setLogSucsess] = useState(false);
+  const [clientId, setClientId] = useState(null);
 
-  console.log(sucsess);
+  const setLogin = (isLogged, clientid) => {
+    console.log("IN SET LOGIN");
+    setSucsess(isLogged);
+    setClientId(clientid);
+    localStorage.setItem("isloggedin", JSON.stringify(isLogged));
+    localStorage.setItem("clientId", JSON.stringify(isLogged));
+    console.log(isLogged, clientid);
+  };
 
-  const history = useHistory();
+  const getLogin = () => {
+    const isLoggedin = JSON.parse(localStorage.getItem("isloggedin"));
+    const id = JSON.parse(localStorage.getItem("clientId"));
+    setSucsess(isLoggedin);
+    setClientId(id);
+  };
 
-  const redirect = () => {
-    history.push("/");
+  const getProfileCall = () => {
+    getProfile(clientId, setProfile);
   };
 
   useEffect(() => {
     getDocList(setList);
-    // getProfile(userId, setProfile);
+    getLogin();
   }, []);
   return (
     <div className="App">
@@ -35,26 +47,27 @@ function App() {
         <Switch>
           <Route exact path="/">
             {sucsess ? (
-              <Home list={list} profile={profile} setProfile={setProfile} />
+              <Home
+                clientId={clientId}
+                list={list}
+                profile={profile}
+                getProfileCall={getProfileCall}
+              />
             ) : (
               <Redirect to="/login" />
             )}
           </Route>
           <Route path="/signup">
-            <Signup setSucsess={setSucsess} />
+            {sucsess ? <Redirect to="/" /> : <Signup setLogin={setLogin} />}
           </Route>
 
           <Route path="/login">
-            {sucsess ? (
-              <Redirect to="/" />
-            ) : (
-              <Login setLogSucsess={setLogSucsess} />
-            )}
+            {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
           </Route>
 
           <Route
             path="/clinic/:id/:docname/:title"
-            component={(props) => <Clinic {...props} />}
+            component={(props) => <Clinic {...props} clientId={clientId} />}
           />
           <Route path="/profile">
             <Profile />

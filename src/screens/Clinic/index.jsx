@@ -1,239 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import ClinicHeader from "../../components/ClinicHeader";
-import { getDocClinic } from "../../Api/api";
+import { getDocClinic, setAppointmentApi } from "../../Api/api";
+
 export default function Clinic(props) {
   const [clinic, setClinic] = useState(null);
+  const [appointment, setAppointments] = useState(null);
 
-  const data = { sunday, monday, tuesday, wednesday };
   const {
     match: {
       params: { id, docname, title },
     },
+    clientId,
   } = props;
+
+  const setAppointment = (data) => {
+    const day = data.split("_")[0];
+    const hour = data.split("_")[1];
+    setAppointments(data);
+    const config = { day, hour, docid: id, clientid: clientId };
+    // console.log(config);
+    setAppointmentApi(config);
+  };
 
   useEffect(() => {
     getDocClinic(id, setClinic);
-  }, []);
+  }, [appointment]);
   if (!clinic) return <div>Loading</div>;
-  //   const { sunday } = clinic.cal_data;
-  //   console.log(clinic.cal_data.sunday);
+
   return (
     <div>
       <ClinicHeader data={clinic} />
-      <Calendar data={clinic.cal_data} />
+      <Calendar
+        data={{ ...clinic.cal_data, id }}
+        setAppointment={setAppointment}
+        appointment={appointment}
+      />
     </div>
   );
 }
-
-const sunday = [
-  {
-    hour: 9,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 10,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 11,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 12,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 13,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 14,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 15,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 16,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 17,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 18,
-    istaken: false,
-    takenby: null,
-  },
-];
-
-const monday = [
-  {
-    hour: 9,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 10,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 11,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 12,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 13,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 14,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 15,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 16,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 17,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 18,
-    istaken: false,
-    takenby: null,
-  },
-];
-
-const tuesday = [
-  {
-    hour: 9,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 10,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 11,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 12,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 13,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 14,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 15,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 16,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 17,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 18,
-    istaken: true,
-    takenby: null,
-  },
-];
-
-const wednesday = [
-  {
-    hour: 9,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 10,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 11,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 12,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 13,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 14,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 15,
-    istaken: false,
-    takenby: null,
-  },
-  {
-    hour: 16,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 17,
-    istaken: true,
-    takenby: null,
-  },
-  {
-    hour: 18,
-    istaken: false,
-    takenby: null,
-  },
-];
