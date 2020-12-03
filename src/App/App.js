@@ -10,6 +10,7 @@ import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
 
+
 function App() {
   const [sucsess, setSucsess] = useState(false);
   const [list, setList] = useState(null);
@@ -37,7 +38,10 @@ function App() {
   useEffect(() => {
     getDocList(setList);
     getLogin();
+    getProfileCall();
+    console.log(profile);
   }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -68,7 +72,7 @@ function App() {
             component={(props) => <Clinic {...props} clientId={clientId} />}
           />
           <Route path="/profile">
-            <Profile profile={profile}/>
+           <Profile profile = {profile}/>
           </Route>
         </Switch>
       </BrowserRouter>

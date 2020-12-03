@@ -24,6 +24,9 @@ export default function Navbar() {
             <li id="sign up">
               <Link to="btn btn-primary">Profile</Link>
             </li>
+            <li id="Log out">
+              <Link to="btn btn-primary">Profile</Link>
+            </li>
           </ul>
         </div>
       </div>
