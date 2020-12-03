@@ -70,7 +70,7 @@ function App() {
             component={(props) => <Clinic {...props} clientId={clientId} />}
           />
           <Route path="/profile">
-            <Profile />
+            <Profile profile={profile}/>
           </Route>
         </Switch>
       </BrowserRouter>
