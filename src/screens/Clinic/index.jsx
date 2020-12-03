@@ -10,7 +10,6 @@ export default function Clinic(props) {
   const [clinic, setClinic] = useState(null);
   const [appointment, setAppointments] = useState(null);
   const [calendarCreated, setCalendarCreated] = useState(false);
-  const isDoc = JSON.parse(localStorage.getItem("isDoc"));
 
   const {
     match: {

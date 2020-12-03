@@ -14,7 +14,8 @@ export default function Signup(props) {
 
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
-    const url = `http://localhost:4000/${checked ? "doctor" : "client"}/signup`;
+    const heroku = `https://timelyserver.herokuapp.com/`;
+    const url = `${heroku}${checked ? "doctor" : "client"}/signup`;
     const { setLogin } = props;
 
     console.log("url", url);

@@ -10,10 +10,10 @@ export default function Login(props) {
   const { setLogin, setClientId } = props;
   const data = { email, pass };
 
-  const url = `https://timelyserver.herokuapp.com/`;
+  const heroku = `https://timelyserver.herokuapp.com/`;
   const local = `http://localhost:4000/`;
   function loginHandler() {
-    fetch(`${local}${check ? "doctor" : "client"}/login`, {
+    fetch(`${heroku}${check ? "doctor" : "client"}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
