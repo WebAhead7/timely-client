@@ -19,6 +19,12 @@ form {
 .fields input {
   font-size: 20px;
   padding: 5px;
+  background-color: #03506f;
+  color: #fff;
+}
+
+.fields input::placeholder {
+  color: #fff;
 }
 
 #register {
@@ -32,6 +38,7 @@ form {
 
 #log-in-title {
   font-size: 50px;
+  margin-top: 50px;
 }
 
 #whoDiv {
@@ -44,9 +51,17 @@ form {
 
 #login-div button {
   font-size: 20px;
-  padding: 5px;
   cursor: pointer;
   align-self: center;
+  padding: 5px;
+  outline: none;
+  transition-property: all;
+  transition-duration: 0.4s;
+}
+
+#login-div button:hover {
+  background-color: #0a043c;
+  color: #fff;
 }
 
 .green {

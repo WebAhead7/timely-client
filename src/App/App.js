@@ -10,6 +10,7 @@ import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
 
+
 function App() {
   const [sucsess, setSucsess] = useState(false);
   const [list, setList] = useState(null);
@@ -42,7 +43,10 @@ function App() {
   useEffect(() => {
     getDocList(setList);
     getLogin();
+    getProfileCall();
+    console.log(profile);
   }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
@@ -75,7 +79,7 @@ function App() {
             )}
           />
           <Route path="/profile">
-            <Profile />
+           <Profile profile = {profile}/>
           </Route>
         </Switch>
       </BrowserRouter>

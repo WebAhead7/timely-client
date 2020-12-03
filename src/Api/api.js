@@ -32,6 +32,7 @@ export const getProfile = async (id, setProfile) => {
     const profile = await data.json();
     setProfile(profile);
     console.log(profile);
+    localStorage.setItem("userprofile", JSON.stringify(profile));
   } catch (e) {
     console.log(e);
   }
