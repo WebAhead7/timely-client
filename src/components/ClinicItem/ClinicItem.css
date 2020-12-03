@@ -3,6 +3,10 @@
   width: 100%;
   padding: 20px 0;
   display: flex;
+  justify-content: space-around;
+  border: 2px solid red;
+  margin-bottom: 10px;
+  border-radius: 20px;
 }
 
 .doc_img_item {
@@ -12,11 +16,18 @@
 
 .doc_img_item img {
   border-radius: 10px;
+  width: 250px;
 }
 
 .doc_name_item {
-  width: 75%;
+  width: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 30px;
+}
+
+h2 {
+  color: #03506f;
+  text-decoration: none;
 }

@@ -12,5 +12,14 @@ export default function Home(props) {
     getProfileCall();
   }, []);
   // if (!profile) return <div>Loading</div>;
-  return <div className="home_page">{list && <ClinicList list={list} />}</div>;
+
+  return (
+    <div className="home_page">
+      <div>
+        <h1 className="clinics-list">List Of Clinics</h1>
+      </div>
+
+      {list && <ClinicList list={list} />}
+    </div>
+  );
 }
