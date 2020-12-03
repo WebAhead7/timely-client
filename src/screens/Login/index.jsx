@@ -27,7 +27,7 @@ export default function Login(props) {
         console.log(typeof results);
 
         if (results.auth) {
-          setLogin(true, String(results.id));
+          setLogin(true, String(results.id), results.isDoc);
         }
       })
       .catch((error) => console.error(error.msg));

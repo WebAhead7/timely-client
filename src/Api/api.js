@@ -65,10 +65,10 @@ export const createCalendarApi = async (id, days) => {
     const response = await fetch(calendarUrl, config);
     const json = await response.json();
 
-    if (json.status === 200) {
+    if (json.status === 201) {
       alert("Calendar Created");
-    } else {
-      alert("Please try again");
+    } else if (json.status === 301) {
+      alert("You already created a calendar");
     }
   } catch (error) {
     console.log(error);
