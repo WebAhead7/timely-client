@@ -42,8 +42,37 @@ export const setAppointmentApi = async (conf) => {
   try {
     const response = await fetch(appointmentUrl);
     const json = await response.json();
-    console.log(json);
+
+    if (json.status === 403) {
+      alert(json.message);
+    } else {
+      alert("You have an appointment");
+    }
   } catch (error) {
     console.log(error);
   }
 };
+
+export const createCalendarApi = async (id, days) => {
+  const config = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(days),
+  };
+
+  const calendarUrl = `http://localhost:4000/doctor/${id}/create-calendar`;
+  try {
+    const response = await fetch(calendarUrl, config);
+    const json = await response.json();
+
+    if (json.status === 200) {
+      alert("Calendar Created");
+    } else {
+      alert("Please try again");
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// http://localhost:4000/doctor/3/create-calendar

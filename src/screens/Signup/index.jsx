@@ -15,6 +15,7 @@ export default function Signup(props) {
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
     const url = `http://localhost:4000/${checked ? "doctor" : "client"}/signup`;
+    const { setLogin } = props;
 
     console.log("url", url);
     fetch(url, {
@@ -23,10 +24,10 @@ export default function Signup(props) {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((msg) => {
-        setMsg(msg.msg);
-        if (msg.auth) {
-          props.setLogin(true);
+      .then((results) => {
+        setMsg(results.msg);
+        if (results.auth) {
+          setLogin(true, String(results.id));
         }
       })
       .catch((err) => console.log(err));

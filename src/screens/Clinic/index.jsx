@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import ClinicHeader from "../../components/ClinicHeader";
+import NoClinic from "../../components/NoClinic";
+import CreateCalendar from "../../components/CreateCalendar";
+
 import { getDocClinic, setAppointmentApi } from "../../Api/api";
 
 export default function Clinic(props) {
@@ -25,12 +28,14 @@ export default function Clinic(props) {
 
   useEffect(() => {
     getDocClinic(id, setClinic);
-  }, [appointment]);
-  if (!clinic) return <div>Loading</div>;
+  }, [setAppointments, appointment]);
+
+  if (!clinic) return <CreateCalendar />;
 
   return (
     <div>
       <ClinicHeader data={clinic} />
+
       <Calendar
         data={{ ...clinic.cal_data, id }}
         setAppointment={setAppointment}

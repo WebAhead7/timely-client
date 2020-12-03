@@ -21,10 +21,13 @@ export default function Login(props) {
       .then((res) => {
         return res.json();
       })
-      .then((message) => {
+      .then((results) => {
         setMessage(message);
-        if (message.auth) {
-          setLogin(true, message.id);
+        console.log(results);
+        console.log(typeof results);
+
+        if (results.auth) {
+          setLogin(true, String(results.id));
         }
       })
       .catch((error) => console.error(error.msg));
