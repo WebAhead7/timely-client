@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Calendar from "../../components/Calendar";
 import ClinicHeader from "../../components/ClinicHeader";
+import NoClinic from "../../components/NoClinic";
+import CreateCalendar from "../../components/CreateCalendar";
+
 import { getDocClinic, setAppointmentApi } from "../../Api/api";
 
 export default function Clinic(props) {
   const [clinic, setClinic] = useState(null);
   const [appointment, setAppointments] = useState(null);
+  const [calendarCreated, setCalendarCreated] = useState(false);
+  const isDoc = JSON.parse(localStorage.getItem("isDoc"));
 
   const {
     match: {
@@ -25,12 +30,15 @@ export default function Clinic(props) {
 
   useEffect(() => {
     getDocClinic(id, setClinic);
-  }, [appointment]);
-  if (!clinic) return <div>Loading</div>;
+  }, [setAppointments, appointment, calendarCreated]);
+
+  if (!clinic)
+    return <CreateCalendar setCalendarCreated={setCalendarCreated} />;
 
   return (
     <div>
       <ClinicHeader data={clinic} />
+
       <Calendar
         data={{ ...clinic.cal_data, id }}
         setAppointment={setAppointment}
