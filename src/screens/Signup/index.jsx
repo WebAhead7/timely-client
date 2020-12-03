@@ -35,6 +35,7 @@ export default function Signup(props) {
   return (
     <div className="signup_form">
       <form>
+        <h1 id="signup-title">Sign Up</h1>
         <label htmlFor="fname">First name:</label>
         <br />
         <input
@@ -71,7 +72,7 @@ export default function Signup(props) {
         <label htmlFor="pass">Password:</label>
         <br />
         <input
-          type="text"
+          type="password"
           id="pass"
           name="pass"
           required
@@ -90,8 +91,7 @@ export default function Signup(props) {
           onChange={(event) => setImgUrl(event.target.value)}
         />
         <br />
-        <br />
-        <label htmlFor="doctor"> I'm a Doctor?</label>
+        <label htmlFor="doctor"> I'm a Doctor? </label>
         <input
           type="checkbox"
           id="doctor"
@@ -102,7 +102,6 @@ export default function Signup(props) {
           onChange={(event) => setChecked(event.target.checked)}
         />
       </form>
-      <br />
       {checked && (
         <form>
           <label htmlFor="title">Specialization:</label>
@@ -130,7 +129,13 @@ export default function Signup(props) {
         </form>
       )}
 
-      <button onClick={handleSubmit}>SUBMIT</button>
+      <button
+        className={checked ? "btn2" : "btn1"}
+        id="submit"
+        onClick={handleSubmit}
+      >
+        SUBMIT
+      </button>
 
       <h1>{msg}</h1>
     </div>

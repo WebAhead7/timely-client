@@ -61,12 +61,12 @@ export default function Login(props) {
       <button onClick={loginHandler}>Login</button>
       <br />
       <br />
-      {/* <Link to="/signup" id="register">
+      <Link to="/signup" id="register">
         Click Here To Register
       </Link>
       <h1 className={message.msg === "Welcome" ? "green" : "red"}>
         {message.msg ? message.msg : ""}
-      </h1> */}
+      </h1>
     </div>
   );
 }
