@@ -5,7 +5,8 @@ import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Profile from "../screens/Profile";
-import Navbar from "../components/Navbar";
+import Contact from "../components/Contact";
+import About from "../components/About";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
@@ -42,38 +43,37 @@ function App() {
   }, []);
   return (
     <div className="App">
-      <BrowserRouter>
-        <Navbar />
-        <Switch>
-          <Route exact path="/">
-            {sucsess ? (
-              <Home
-                clientId={clientId}
-                list={list}
-                profile={profile}
-                getProfileCall={getProfileCall}
-              />
-            ) : (
-              <Redirect to="/login" />
-            )}
-          </Route>
-          <Route path="/signup">
-            {sucsess ? <Redirect to="/" /> : <Signup setLogin={setLogin} />}
-          </Route>
-
-          <Route path="/login">
-            {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
-          </Route>
-
-          <Route
-            path="/clinic/:id/:docname/:title"
-            component={(props) => <Clinic {...props} clientId={clientId} />}
+      <Route exact path="/">
+        {sucsess ? (
+          <Home
+            clientId={clientId}
+            list={list}
+            profile={profile}
+            getProfileCall={getProfileCall}
           />
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
-      </BrowserRouter>
+        ) : (
+          <Redirect to="/login" />
+        )}
+      </Route>
+      <Route path="/signup">
+        {sucsess ? <Redirect to="/" /> : <Signup setLogin={setLogin} />}
+      </Route>
+
+      <Route path="/login">
+        {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
+      </Route>
+
+      <Route path="/about">{About}</Route>
+
+      <Route path="/contact">{Contact}</Route>
+
+      <Route
+        path="/clinic/:id/:docname/:title"
+        component={(props) => <Clinic {...props} clientId={clientId} />}
+      />
+      <Route path="/profile">
+        <Profile />
+      </Route>
     </div>
   );
 }
