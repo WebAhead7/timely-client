@@ -27,7 +27,7 @@ export default function Signup(props) {
       .then((results) => {
         setMsg(results.msg);
         if (results.auth) {
-          setLogin(true, String(results.id));
+          setLogin(true, String(results.id), results.isDoc);
         }
       })
       .catch((err) => console.log(err));

@@ -16,19 +16,24 @@ function App() {
   const [list, setList] = useState(null);
   const [profile, setProfile] = useState(null);
   const [clientId, setClientId] = useState(null);
+  const [isDoc, setIsDoc] = useState(null);
 
-  const setLogin = (isLogged, id) => {
+  const setLogin = (isLogged, id, isDoc) => {
     setSucsess(isLogged);
     setClientId(id);
     localStorage.setItem("isloggedin", JSON.stringify(isLogged));
     localStorage.setItem("clientId", JSON.stringify(id));
+    localStorage.setItem("isDoc", JSON.stringify(isDoc));
   };
 
   const getLogin = () => {
     const isLoggedin = JSON.parse(localStorage.getItem("isloggedin"));
     const id = JSON.parse(localStorage.getItem("clientId"));
+    const isDoc = JSON.parse(localStorage.getItem("isDoc"));
+
     setSucsess(isLoggedin);
     setClientId(id);
+    setIsDoc(isDoc);
   };
 
   const getProfileCall = () => {
@@ -69,7 +74,9 @@ function App() {
 
           <Route
             path="/clinic/:id/:docname/:title"
-            component={(props) => <Clinic {...props} clientId={clientId} />}
+            component={(props) => (
+              <Clinic {...props} clientId={clientId} isDoc={isDoc} />
+            )}
           />
           <Route path="/profile">
            <Profile profile = {profile}/>

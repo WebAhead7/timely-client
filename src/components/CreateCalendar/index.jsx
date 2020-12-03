@@ -11,13 +11,15 @@ const days = [
   "saturday",
 ];
 
-const workingDays = ["sunday", "monday", "wednesday"];
-export default function CreateCalendar() {
+const workingDays = ["sunday", "monday", "friday"];
+export default function CreateCalendar(props) {
   const [checked, setChecked] = useState();
+  const { setCalendarCreated } = props;
 
   const submitCalendar = () => {
     const id = JSON.parse(localStorage.getItem("clientId"));
     createCalendarApi(id, workingDays);
+    setCalendarCreated(true);
   };
 
   return (
