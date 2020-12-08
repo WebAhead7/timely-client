@@ -13,7 +13,7 @@ export default function Login(props) {
   const heroku = `https://timelyserver.herokuapp.com/`;
   const local = `http://localhost:4000/`;
   function loginHandler() {
-    fetch(`${heroku}${check ? "doctor" : "client"}/login`, {
+    fetch(`${local}${check ? "doctor" : "client"}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
