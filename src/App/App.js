@@ -6,10 +6,11 @@ import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Profile from "../screens/Profile";
 import Navbar from "../components/Navbar";
+import Contact from "../components/contact";
+import About from "../components/about";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
-
 
 function App() {
   const [sucsess, setSucsess] = useState(false);
@@ -67,6 +68,8 @@ function App() {
           <Route path="/signup">
             {sucsess ? <Redirect to="/" /> : <Signup setLogin={setLogin} />}
           </Route>
+          <Route path="/contact" component={Contact} />
+          <Route path="/about" component={About} />
 
           <Route path="/login">
             {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
@@ -79,7 +82,7 @@ function App() {
             )}
           />
           <Route path="/profile">
-           <Profile profile = {profile}/>
+            <Profile profile={profile} />
           </Route>
         </Switch>
       </BrowserRouter>

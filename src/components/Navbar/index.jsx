@@ -8,10 +8,10 @@ export default function Navbar() {
       <Link className="link" to="/">
         <button>Home</button>
       </Link>
-      <Link className="link" to="">
+      <Link className="link" to="/about">
         <button>About Us</button>
       </Link>
-      <Link className="link" to="">
+      <Link className="link" to="/contact">
         <button>Contact Us</button>
       </Link>
       <Link className="link" to="/login">
