@@ -1,12 +1,18 @@
 import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import logout from "../logout.js";
-export default function Navbar() {
+import { logOut } from "./logout";
+export default function Navbar(props) {
+  const { setSucsess } = props;
   const userprofile = JSON.parse(localStorage.getItem("userprofile"));
   const { firstname, lastname } = userprofile || {
     firstname: "user",
     lastname: "020",
+  };
+
+  const onPress = () => {
+    setSucsess(false);
+    logOut();
   };
 
   return (
@@ -31,7 +37,7 @@ export default function Navbar() {
       </Link>
       <Link className="link" to="/profile"></Link>
       <Link id="logout" to="/login" className="link">
-        <button onClick={logout}>Logout</button>
+        <button onClick={onPress}>Logout</button>
       </Link>
     </nav>
   );

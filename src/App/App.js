@@ -6,9 +6,8 @@ import Login from "../screens/Login";
 import Signup from "../screens/Signup";
 import Profile from "../screens/Profile";
 import Navbar from "../components/Navbar";
-import Contact from "../components/contact";
-import About from "../components/about";
-import logout from "../components/logout.js";
+import Contact from "../screens/Contact/contact";
+import About from "../screens/About/about";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
@@ -43,10 +42,10 @@ function App() {
   };
 
   useEffect(() => {
+    getLogin();
     getDocList(setList);
 
     if (sucsess) {
-      getLogin();
       if (clientId) {
         getProfileCall();
         console.log(profile);
@@ -57,7 +56,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        {sucsess && <Navbar />}
+        {sucsess && <Navbar setSucsess={setSucsess} />}
         <Switch>
           <Route exact path="/">
             {sucsess ? (
@@ -76,7 +75,6 @@ function App() {
           </Route>
           <Route path="/contact" component={Contact} />
           <Route path="/about" component={About} />
-          <Route path="/logout" component={logout} />
 
           <Route path="/login">
             {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
