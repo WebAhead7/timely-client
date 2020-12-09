@@ -18,7 +18,6 @@ export default function Signup(props) {
     const local = `http://localhost:4000/`;
     const url = `${local}${checked ? "doctor" : "client"}/signup`;
     const { setLogin } = props;
-
     console.log("url", url);
     fetch(url, {
       method: "POST",
@@ -29,6 +28,7 @@ export default function Signup(props) {
       .then((results) => {
         setMsg(results.msg);
         if (results.auth) {
+          window.localStorage.setItem("fullName", `${firstname} ${lastname}`);
           setLogin(true, String(results.id), results.isDoc);
         }
       })
