@@ -28,7 +28,7 @@ export default function Signup(props) {
       .then((results) => {
         setMsg(results.msg);
         if (results.auth) {
-          window.localStorage.setItem("fullName", `${firstname} ${lastname}`);
+          window.localStorage.setItem("userprofile", JSON.stringify(data));
           setLogin(true, String(results.id), results.isDoc);
         }
       })

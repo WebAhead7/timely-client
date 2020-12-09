@@ -2,11 +2,19 @@ import React from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-export default function Navbar({ fullname }) {
-  const fullName = window.localStorage.getItem("fullName");
+export default function Navbar() {
+  const userprofile = JSON.parse(localStorage.getItem("userprofile"));
+  const { firstname, lastname } = userprofile || {
+    firstname: "user",
+    lastname: "020",
+  };
   return (
     <nav>
-      {fullName ? <h3 className="nav-name">Hi {fullName} 👋</h3> : null}
+      {userprofile && (
+        <h3 className="nav-name">
+          Hi {firstname} {lastname} 👋
+        </h3>
+      )}
       <Link className="link" to="/">
         <button>Home</button>
       </Link>
