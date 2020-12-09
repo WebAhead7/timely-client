@@ -8,6 +8,7 @@ export default function Profile(props) {
     const localProfile = JSON.parse(localStorage.getItem("userprofile"));
     setUserProfile(localProfile);
   }
+  console.log("USER PROFILEEEEE: ", userProfile);
   // const { firstname, lastname, email, imgUrl, title, dsc } = userProfile;
 
   console.log("im in the profile", userProfile);

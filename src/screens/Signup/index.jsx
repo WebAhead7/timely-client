@@ -15,9 +15,9 @@ export default function Signup(props) {
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
     const heroku = `https://timelyserver.herokuapp.com/`;
-    const url = `${heroku}${checked ? "doctor" : "client"}/signup`;
+    const local = `http://localhost:4000/`;
+    const url = `${local}${checked ? "doctor" : "client"}/signup`;
     const { setLogin } = props;
-
     console.log("url", url);
     fetch(url, {
       method: "POST",
@@ -28,6 +28,7 @@ export default function Signup(props) {
       .then((results) => {
         setMsg(results.msg);
         if (results.auth) {
+          window.localStorage.setItem("userprofile", JSON.stringify(data));
           setLogin(true, String(results.id), results.isDoc);
         }
       })
