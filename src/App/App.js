@@ -51,7 +51,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        {sucsess && <Navbar />}
         <Switch>
           <Route exact path="/">
             {sucsess ? (
@@ -74,15 +74,18 @@ function App() {
           <Route path="/login">
             {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
           </Route>
-
-          <Route
-            path="/clinic/:id/:docname/:title"
-            component={(props) => (
-              <Clinic {...props} clientId={clientId} isDoc={isDoc} />
-            )}
-          />
+          {sucsess ? (
+            <Route
+              path="/clinic/:id/:docname/:title"
+              component={(props) => (
+                <Clinic {...props} clientId={clientId} isDoc={isDoc} />
+              )}
+            />
+          ) : (
+            <Redirect to="/login" />
+          )}
           <Route path="/profile">
-            <Profile profile={profile} />
+            {sucsess ? <Profile profile={profile} /> : <Redirect to="/login" />}
           </Route>
         </Switch>
       </BrowserRouter>
