@@ -35,3 +35,8 @@ nav button:hover {
   font-style: italic;
   cursor: default;
 }
+
+.full-name {
+  color: #fff;
+  text-decoration: none;
+}

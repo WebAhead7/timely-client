@@ -8,11 +8,16 @@ export default function Navbar() {
     firstname: "user",
     lastname: "020",
   };
+
   return (
     <nav>
       {userprofile && (
         <h3 className="nav-name">
-          Hi {firstname} {lastname} 👋
+          Hi{" "}
+          <Link className="full-name" to="/profile">
+            {firstname} {lastname}
+          </Link>
+          👋
         </h3>
       )}
       <Link className="link" to="/">
@@ -23,9 +28,6 @@ export default function Navbar() {
       </Link>
       <Link className="link" to="/contact">
         <button>Contact Us</button>
-      </Link>
-      <Link className="link" to="/login">
-        <button>Sign In</button>
       </Link>
       <Link className="link" to="/profile"></Link>
       <Link id="logout" to="/" className="link">
