@@ -10,7 +10,6 @@ import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
 
-
 function App() {
   const [sucsess, setSucsess] = useState(false);
   const [list, setList] = useState(null);
@@ -79,7 +78,7 @@ function App() {
             )}
           />
           <Route path="/profile">
-           <Profile profile = {profile}/>
+            <Profile profile={profile} />
           </Route>
         </Switch>
       </BrowserRouter>
