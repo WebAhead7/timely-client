@@ -27,6 +27,8 @@ export default function Login(props) {
         console.log(typeof results);
 
         if (results.auth) {
+          // const { firstname, lastname } = results;
+          window.localStorage.setItem("userprofile", JSON.stringify(results));
           setLogin(true, String(results.id), results.isDoc);
         }
       })

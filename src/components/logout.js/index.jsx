@@ -7,14 +7,14 @@ const local = `http://localhost:4000/`;
 
 export default function logOut(props){
 
-    fetch(`${local}/main/logout`).then(res=>res.json()).catch(err=> console.log(err));
-
+    console.log("im in log outt")
     localStorage.clear();
 
-    return 
-
-
+    return fetch(`${local}main/logout`).then(res=>res.json()).then(res=>console.log(res)).catch(err=> console.log(err));
+    
+    
+   
 
  }
 
- module.exports
+ 
