@@ -27,6 +27,13 @@ export default function Profile(props) {
         <h2>Last Name: {userProfile.lastname}</h2>
         <h2>Email: {userProfile.email}</h2>
       </div>
+
+      <div className="appointments">
+        <h1>Appointments You Have</h1>
+        <p>
+          <h2>Day: {userProfile.appoin}</h2>
+        </p>
+      </div>
       {userProfile.title && userProfile.dsc && (
         <div className="info2">
           <p>

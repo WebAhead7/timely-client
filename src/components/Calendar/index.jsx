@@ -15,6 +15,7 @@ export default function Calendar(props) {
     sutarday,
     id,
   } = props.data;
+  console.log(props.data);
   // const days = Object.keys(props.data);
   const days = [
     "sunday",
