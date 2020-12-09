@@ -2,6 +2,8 @@ import React from "react";
 
 import "./Signup.css";
 export default function Signup(props) {
+
+
   const [checked, setChecked] = React.useState(false);
   const [firstname, setFirstName] = React.useState("");
   const [lastname, setLastName] = React.useState("");
@@ -12,6 +14,7 @@ export default function Signup(props) {
   const [dsc, setDsc] = React.useState("");
   const [msg, setMsg] = React.useState("");
 
+  
   function handleSubmit() {
     const data = { firstname, lastname, email, pass, imgUrl, title, dsc };
     const heroku = `https://timelyserver.herokuapp.com/`;

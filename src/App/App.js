@@ -8,6 +8,7 @@ import Profile from "../screens/Profile";
 import Navbar from "../components/Navbar";
 import Contact from "../components/contact";
 import About from "../components/about";
+import logout from "../components/logout.js";
 import "./App.css";
 import Clinic from "../screens/Clinic";
 import { getDocList, getProfile } from "../Api/api";
@@ -43,10 +44,15 @@ function App() {
 
   useEffect(() => {
     getDocList(setList);
-    getLogin();
-    getProfileCall();
-    console.log(profile);
-  }, []);
+
+    if (sucsess) {
+      getLogin();
+      if (clientId) {
+        getProfileCall();
+        console.log(profile);
+      }
+    }
+  }, [clientId]);
 
   return (
     <div className="App">
@@ -70,6 +76,7 @@ function App() {
           </Route>
           <Route path="/contact" component={Contact} />
           <Route path="/about" component={About} />
+          <Route path="/logout" component={logout} />
 
           <Route path="/login">
             {sucsess ? <Redirect to="/" /> : <Login setLogin={setLogin} />}
