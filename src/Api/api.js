@@ -1,5 +1,6 @@
 const heroku = `https://timelyserver.herokuapp.com/`;
 const local = `http://localhost:4000/`;
+const localUser = JSON.parse(localStorage.getItem("userprofile"));
 
 export const getDocList = async (setList) => {
   const listUrl = `${local}main/get-list`;
@@ -28,10 +29,14 @@ export const getDocClinic = async (id, setClinic) => {
 export const getProfile = async (id, setProfile) => {
   const profileUrl = `${local}client/${id}/client-profile`;
   try {
-    const data = await fetch(profileUrl);
+    const data = await fetch(profileUrl, {
+      headers: { access_token: localUser.token },
+    });
     const profile = await data.json();
     setProfile(profile);
+
     console.log(profile);
+
     localStorage.setItem("userprofile", JSON.stringify(profile));
   } catch (e) {
     console.log(e);
@@ -43,7 +48,9 @@ export const setAppointmentApi = async (conf) => {
 
   const appointmentUrl = `${local}client/create-appointment/${docid}/${clientid}/${day}/${hour}`;
   try {
-    const response = await fetch(appointmentUrl);
+    const response = await fetch(appointmentUrl, {
+      headers: { access_token: localUser.token },
+    });
     const json = await response.json();
 
     if (json.status === 403) {

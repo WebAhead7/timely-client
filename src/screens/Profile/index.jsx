@@ -3,15 +3,22 @@ import "./Profile.css";
 
 export default function Profile(props) {
   const [userProfile, setUserProfile] = React.useState(null);
+  const { profile } = props;
 
   function getlocalprofile() {
     const localProfile = JSON.parse(localStorage.getItem("userprofile"));
     setUserProfile(localProfile);
   }
-  console.log("USER PROFILEEEEE: ", userProfile);
-  // const { firstname, lastname, email, imgUrl, title, dsc } = userProfile;
 
-  console.log("im in the profile", userProfile);
+  const {
+    firstname,
+    lastname,
+    email,
+    imgUrl,
+    title,
+    dsc,
+    appointments,
+  } = JSON.parse(localStorage.getItem("userprofile"));
 
   useEffect(() => {
     getlocalprofile();
@@ -22,20 +29,31 @@ export default function Profile(props) {
   return (
     <div className="profile">
       <div className="left-info">
-        <img src={userProfile.imgUrl} id="profile-img" alt="profilepic"></img>
-        <h2>First Name: {userProfile.firstname}</h2>
-        <h2>Last Name: {userProfile.lastname}</h2>
-        <h2>Email: {userProfile.email}</h2>
+        <img src={imgUrl} id="profile-img" alt="profilepic"></img>
+        <h2>First Name: {firstname}</h2>
+        <h2>Last Name: {lastname}</h2>
+        <h2>Email: {email}</h2>
       </div>
-      {userProfile.title && userProfile.dsc && (
+      <div>
+        {appointments && (
+          <ul>
+            {appointments.map((app) => (
+              <li>
+                Day: {app.day}, Hour: {app.hour}:00
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      {title && dsc && (
         <div className="info2">
           <p>
             <h2>Title</h2>
-            {userProfile.title}
+            {profile.title}
           </p>
           <p>
             <h2>About</h2>
-            {userProfile.dsc}
+            {profile.dsc}
           </p>
         </div>
       )}
