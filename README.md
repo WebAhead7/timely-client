@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Timely
+Timely clinic
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+   We introduce you a huge website to make an appointments to doctors that you choose, it's just easy website to use, after login with your e-mail
+   and password, if you havn't an account, then you can signup for new user. 
+   Our medical website is the virtual office of your clinic, a digital image of your practice. Make it well-structured and appealing and it will bring
+   more patients and revenue. 
+   That’s what the best medical websites do and that’s why medical website design is key. we needs to make this medical website interactive in order to get visitors
+   engaged and increase your convenience to use it. 
+   We make sure that our website allows the visitor to perform all tasks required to complete your ultimate call to action before they leave the website.
+   
+   <h2 align="center"><a href="https://quirky-bell-01e77b.netlify.app/login">TRY THE WEBSITE</h2>
+        
+   # Features in our website:
+   - The best website that help patients to choose any appointment to any doctors in different types of treatments.
+   - The doctors or patients can login to the website just type an email and password, to see the calender.
+   - The best websites in the world employ responsive design.
+   - The most effective way to have a hospital website that renders perfectly on any device, no matter the screen size.
+   - In today’s mobile world, you need to go with responsive design to be among the top health website.
+        
+  # Built With
+- JavaScript (Express)
+- PLpgSQL
+- html
+- CSS
 
-## Available Scripts
+# Getting Started
 
-In the project directory, you can run:
+- In the main page just type an email and password.
+- If you havn't account, you can sign up.
+- You can choose any appointment that appropriate to your account.
 
-### `yarn start`
+# Contact US
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- alaabashiyi: @GitHub
+- muhammadawwad9: @GitHub
+- OmklthomAmara: @GitHub
+- myassar1211: @GitHub
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+        
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
