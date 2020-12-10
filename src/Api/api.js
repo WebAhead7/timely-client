@@ -19,7 +19,12 @@ export const getDocClinic = async (id, setClinic) => {
   try {
     const data = await fetch(clinicUrl);
     const clinic = await data.json();
-    setClinic(clinic);
+    if (clinic) {
+      setClinic(clinic);
+      console.log(clinic);
+    } else {
+      console.log("NOT FOUNDD");
+    }
     // console.log(list);
   } catch (e) {
     console.log(e);
@@ -70,7 +75,7 @@ export const createCalendarApi = async (id, days) => {
     body: JSON.stringify(days),
   };
 
-  const calendarUrl = `${heroku}doctor/${id}/create-calendar`;
+  const calendarUrl = `${local}doctor/${id}/create-calendar`;
   try {
     const response = await fetch(calendarUrl);
     const json = await response.json();

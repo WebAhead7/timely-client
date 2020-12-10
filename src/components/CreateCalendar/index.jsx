@@ -18,7 +18,7 @@ export default function CreateCalendar(props) {
 
   const submitCalendar = () => {
     const id = JSON.parse(localStorage.getItem("clientId"));
-    createCalendarApi(id, workingDays);
+    createCalendarApi(id, days);
     setCalendarCreated(true);
   };
 

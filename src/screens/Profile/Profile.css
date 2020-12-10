@@ -5,12 +5,14 @@
 
 .profile {
   width: 80%;
-  height: 500px;
+  min-height: 100vh;
   margin: auto;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: flex-start;
   padding-top: 10px;
   background-color: #eee;
+  row-gap: 60px;
 }
 
 #profile-img {

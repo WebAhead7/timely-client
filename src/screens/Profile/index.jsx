@@ -49,11 +49,11 @@ export default function Profile(props) {
         <div className="info2">
           <p>
             <h2>Title</h2>
-            {profile.title}
+            {title}
           </p>
           <p>
             <h2>About</h2>
-            {profile.dsc}
+            {dsc}
           </p>
         </div>
       )}
